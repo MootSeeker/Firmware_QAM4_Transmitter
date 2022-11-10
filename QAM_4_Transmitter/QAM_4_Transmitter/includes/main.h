@@ -9,6 +9,9 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#include <string.h>
+
+
 // FreeRTOS includes 
 #include "FreeRTOS.h"
 #include "task.h"
@@ -32,6 +35,7 @@
 // Modules
 #include "init.h"
 #include "NHD0420Driver.h"
+#include "qamgen.h"
 
 
 

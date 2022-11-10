@@ -285,6 +285,9 @@
     <Compile Include="includes\NHD0420Driver.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\qamgen.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="init.c">
       <SubType>compile</SubType>
     </Compile>
@@ -295,6 +298,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="NHD0420Driver.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="qamgen.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
