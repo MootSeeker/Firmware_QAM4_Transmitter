@@ -36,6 +36,7 @@
 #include "init.h"
 #include "NHD0420Driver.h"
 #include "qamgen.h"
+#include "twi_master.h"
 
 
 
