@@ -270,9 +270,6 @@
     <Compile Include="includes\aht10.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="twi_master.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="includes\avr_compiler.h">
       <SubType>compile</SubType>
     </Compile>
@@ -282,13 +279,13 @@
     <Compile Include="includes\FreeRTOSConfig.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="includes\twi_master.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="includes\init.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\main.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="includes\measurement.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="includes\mem_check.h">
@@ -304,6 +301,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="measurement.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="mem_check.c">

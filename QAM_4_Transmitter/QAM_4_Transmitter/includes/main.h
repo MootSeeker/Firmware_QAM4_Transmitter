@@ -36,8 +36,22 @@
 #include "init.h"
 #include "NHD0420Driver.h"
 #include "qamgen.h"
-#include "twi_master.h"
+#include "measurement.h"
 
+/*--- System configuration --------------------------------------------------------------------------------
+ *
+ */
+/* Task stack size
+ * NOTE: Stack size in WORDs, Heap in BYTEs! 
+ */
+ #define TASK_STACK_MEAS	( configMINIMAL_STACK_SIZE + 200 )
+ 
+ 
+ /* Task Priorities */
+ #define TASK_PRIORITY_MEAS	( 2 )
+ 
+ /* Task Handles */
+ #define TASK_HANDLE_MEAS	( 1 )
 
 
 
