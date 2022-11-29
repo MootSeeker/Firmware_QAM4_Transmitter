@@ -30,11 +30,13 @@ const int16_t sinLookup50[NR_OF_SAMPLES*2] = {  0x0,0xC8,0x187,0x238,0x2D3,0x353
 uint8_t sendbuffer[100];
 uint8_t sendID = 0;
 
+//Daten werden in Symbole gewandelt 
 void createSendData() 
 {
 	sendID++;
 	char senddata[10] = "HelloWorld";
 	uint8_t datalen = strlen(senddata);
+	
 	sendbuffer[0] = 1;
 	sendbuffer[1] = 2;
 	sendbuffer[2] = sendID & 0x03;
@@ -43,16 +45,23 @@ void createSendData()
 	sendbuffer[5] = (datalen >> 2) & 0x03;
 	sendbuffer[6] = (datalen >> 4) & 0x03;
 	sendbuffer[7] = (datalen >> 6) & 0x03;
-	for(int i = 0; i < datalen;i++) {
+	
+	for(int i = 0; i < datalen;i++)  //Zwei byte entnehmen und an stelle i alle 4*2bit einfügen | 8 ist Start position
+	{
 		sendbuffer[8 + i*4 + 0] = (senddata[i] >> 0) & 0x03;
 		sendbuffer[8 + i*4 + 1] = (senddata[i] >> 2) & 0x03;
 		sendbuffer[8 + i*4 + 2] = (senddata[i] >> 4) & 0x03;
 		sendbuffer[8 + i*4 + 3] = (senddata[i] >> 6) & 0x03;
 	}
+	
 	uint8_t checksum = 0;
-	for(int i = 0; i < 7 + (datalen * 4); i++) {
+	
+	for(int i = 0; i < 7 + (datalen * 4); i++)		//Checksumme von ersten sieben werten berechnen
+	{
 		checksum += sendbuffer[i];
 	}
+	
+	//checksume ebenfalls in buffer einfügen
 	sendbuffer[7 + (datalen * 4) + 0] = (checksum >> 0) & 0x03;
 	sendbuffer[7 + (datalen * 4) + 1] = (checksum >> 2) & 0x03;
 	sendbuffer[7 + (datalen * 4) + 2] = (checksum >> 4) & 0x03;
@@ -81,11 +90,11 @@ void fillBuffer(uint16_t buffer[NR_OF_SAMPLES])
 	{
 		switch(sendbuffer[pSendbuffer]) 
 		{
-			case 0:
-			buffer[i] = 0x800 + (sinLookup100[i]);
+			case 0:											//0x800 ist offset für DAC damit die negativen Werte auch ausgegeben werden können
+			buffer[i] = 0x800 + (sinLookup100[i]);			//Amplitude bei Phase i
 			break;
 			case 1:
-			buffer[i] = 0x800 + (sinLookup100[i+16]);
+			buffer[i] = 0x800 + (sinLookup100[i+16]);		//Phasen schiebung um 16 wäre ein verschiebung von 180°C
 			break;
 			case 2:
 			buffer[i] = 0x800 + (sinLookup50[i]);
