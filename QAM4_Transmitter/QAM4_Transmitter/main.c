@@ -1,8 +1,8 @@
 /*
  * QAM4_Transmitter.c
  *
- * Created: 20.03.2018 18:32:07
- * Author : Martin Burger
+ * Created: 06.12.2022 18:57:08
+ * Author : Kevin Perillo
  */ 
 
 #include "main.h"
