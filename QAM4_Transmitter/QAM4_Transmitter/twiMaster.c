@@ -1,22 +1,62 @@
-/*
- * twiMaster.c
+/**
+ * @file   twiMaster.c
  *
- * Created: 04.12.2022 14:25:22
- *  Author: kevin
- */ 
+ * @brief  Brief description of the content of template.c
+ * @author Kevin Perillo, Juventus Techniker Schule
+ * @date   04.12.2022 - first implementation
+ * @version 1.0.0
+ * 
+ * MIT License
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright (c) 2022 Juventus Techniker Schule
+ */
 
+
+// ********************************************************************************
+/**
+ * @brief  Includes
+ *
+ * Section for module-specific include files
+ * If all include files are inserted in main.h, only the file main.h must be included here
+ */
 #include "main.h"
 
-// I2C Settings
-#define CPU_SPEED 32000000
-#define BAUDRATE    400000
-#define TWI_BAUD ( F_SYS, F_TWI ) (( F_SYS / ( 2 * F_TWI )) - 5 )
-#define TWI_BAUDSETTING TWI_BAUD ( CPU_SPEED, BAUDRATE )
 
-// Static function definition
+
+// ******************************************************************************** 
+/**
+ * @brief  Static function prototypes
+ *
+ * Section for module-specific function prototypes (static) for functions that are only valid within the
+ * module
+ */
  static uint8_t i2cControl( uint8_t ack, i2cCmd_t cmd ); 
 
-// ---------- Static functions -----------
+// ********************************************************************************
+/**
+ * @brief  Static functions definitions
+ *
+ * Definition area for the module-specific functions (static) previously defined within "Static function
+ * prototypes"
+ */
  static uint8_t i2cControl(uint8_t ack, i2cCmd_t cmd) 
  {
 	 ack = ( ack > 0 ? 1 : 0 );
@@ -25,7 +65,12 @@
  }
 
 
-// ---------- Global Functions ----------
+// ********************************************************************************
+/**
+ * @brief  Global functions definitions
+ *
+ * Definition area for the global functions previously defined within "Global function prototypes"
+ */
 
 /**
  *

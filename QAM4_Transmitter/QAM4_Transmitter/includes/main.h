@@ -16,6 +16,8 @@
 
 /*---------- Controller includes ----------*/ 
 #include <avr/io.h>
+#include <avr/interrupt.h>
+
 #include "avr_compiler.h"
 #include "pmic_driver.h"
 #include "TC_driver.h"
@@ -44,7 +46,7 @@
 
 /* ---------- Private includes ---------- */
 #include "twiMaster.h"
-
+#include "lsm9ds1.h"
 
 
 #endif /* MAIN_H_ */

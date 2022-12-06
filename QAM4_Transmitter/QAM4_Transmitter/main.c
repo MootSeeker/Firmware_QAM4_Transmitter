@@ -20,6 +20,9 @@ int main(void)
 	vInitClock();
 	vInitDisplay();
 	
+	LSM9DS1Init( ); 
+	readTempData( ); 
+	
 	initDAC();
 	initDACTimer();
 	initGenDMA();
