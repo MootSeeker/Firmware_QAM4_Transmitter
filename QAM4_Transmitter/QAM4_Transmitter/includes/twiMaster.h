@@ -10,8 +10,6 @@
 #define TWIMASTER_H_
 
 
-
-
 //I2C Commands
 typedef enum i2cCmd_Tag
 {

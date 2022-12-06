@@ -13,9 +13,10 @@
 #define TWI_BAUD ( F_SYS, F_TWI ) (( F_SYS / ( 2 * F_TWI )) - 5 )
 #define TWI_BAUDSETTING TWI_BAUD ( CPU_SPEED, BAUDRATE )
 
-
+// Static function definition
  static uint8_t i2cControl( uint8_t ack, i2cCmd_t cmd ); 
 
+// ---------- Static functions -----------
  static uint8_t i2cControl(uint8_t ack, i2cCmd_t cmd) 
  {
 	 ack = ( ack > 0 ? 1 : 0 );
