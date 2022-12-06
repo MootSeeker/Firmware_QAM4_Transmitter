@@ -94,12 +94,7 @@ void vQuamGen(void *pvParameters)
 	{
 		vTaskDelay(3/portTICK_RATE_MS);
 	}
-	
-	// Init DAC & Timer 
-	initDAC();
-	initDACTimer();
-	initGenDMA();
-		
+			
 	xEventGroupWaitBits(evDMAState, DMAGENREADY, false, true, portMAX_DELAY);
 	
 	for(;;) 

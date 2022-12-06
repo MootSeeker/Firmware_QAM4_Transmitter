@@ -23,6 +23,9 @@ int main(void)
 	LSM9DS1Init( ); 
 	readTempData( ); 
 	
+	initDAC();
+	initDACTimer();
+	initGenDMA();
 	
 	xTaskCreate(vQuamGen, NULL, configMINIMAL_STACK_SIZE+500, NULL, 2, NULL);
 
