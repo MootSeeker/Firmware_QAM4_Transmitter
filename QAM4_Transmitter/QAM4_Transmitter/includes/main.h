@@ -44,7 +44,7 @@
 
 /* ---------- Private includes ---------- */
 #include "twiMaster.h"
-
+#include "lsm9ds1.h"
 
 
 #endif /* MAIN_H_ */
