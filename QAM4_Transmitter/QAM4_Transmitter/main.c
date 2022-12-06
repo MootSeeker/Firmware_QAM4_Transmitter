@@ -33,6 +33,9 @@ int main(void)
 	vDisplayWriteStringAtPos(0,0,"QAM4 Transmitter");
 	vDisplayWriteStringAtPos(1,0,"EDUBoard Version");
 	vDisplayWriteStringAtPos(2,0,"V1.00 Beta");
+	
+	createSendData(); 
+	
 	vTaskStartScheduler();
 	return 0;
 }
