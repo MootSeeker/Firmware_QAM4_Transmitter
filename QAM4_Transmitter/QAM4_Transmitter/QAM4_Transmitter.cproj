@@ -282,6 +282,9 @@
     <Compile Include="includes\init.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\lsm9ds1.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\main.h">
       <SubType>compile</SubType>
     </Compile>
@@ -307,6 +310,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="init.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lsm9ds1.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">

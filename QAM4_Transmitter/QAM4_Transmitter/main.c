@@ -21,6 +21,7 @@ int main(void)
 	vInitDisplay();
 	
 	LSM9DS1Init( ); 
+	readTempData( ); 
 	
 	initDAC();
 	initDACTimer();
