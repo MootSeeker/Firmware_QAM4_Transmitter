@@ -37,7 +37,7 @@ uint8_t sendID = 0;						// ID of created data
 uint8_t sendbuffer_size = 0;				// Dynamic buffer size
 union_float_type senddataf;				// Data buffer to convert float in 4 bytes
 
-void createSendData() 
+void createSendData( void ) 
 {
 	sendID++;
 	
@@ -88,12 +88,22 @@ void createSendData()
 	sendbuffer_size = 8 + (datalen * 4) + 4; 
 }
 
-void vQuamGen(void *pvParameters) {
-	while(evDMAState == NULL) {
+void vQuamGen(void *pvParameters)
+{
+	while(evDMAState == NULL) 
+	{
 		vTaskDelay(3/portTICK_RATE_MS);
 	}
+	
+	// Init DAC & Timer 
+	initDAC();
+	initDACTimer();
+	initGenDMA();
+		
 	xEventGroupWaitBits(evDMAState, DMAGENREADY, false, true, portMAX_DELAY);
-	for(;;) {
+	
+	for(;;) 
+	{
 		vTaskDelay(10/portTICK_RATE_MS);
 	}
 }

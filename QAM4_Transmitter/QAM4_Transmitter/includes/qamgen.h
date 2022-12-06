@@ -9,6 +9,7 @@
 #ifndef QAMGEN_H_
 #define QAMGEN_H_
 
+void createSendData( void );  
 void vQuamGen(void *pvParameters);
 
 

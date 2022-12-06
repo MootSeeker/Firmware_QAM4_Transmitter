@@ -37,8 +37,6 @@ uint16_t adcBuffer0[NR_OF_SAMPLES];
 uint16_t adcBuffer1[NR_OF_SAMPLES];
 
 
-
-
 void initADC(void) {
 	ADCA.CTRLA = 0x01;
 	ADCA.CTRLB = 0x00;
