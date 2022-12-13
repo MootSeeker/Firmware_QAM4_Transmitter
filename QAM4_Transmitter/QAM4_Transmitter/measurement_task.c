@@ -27,7 +27,35 @@ void measurement_task( void* pvParameters )
 	
 	for( ;; )
 	{
-		
+		switch( state )
+		{
+			case MEAS_IDLE: 
+			{
+				
+				break; 
+			}
+			
+			case MEAS_SENSOR_GET_DATA: 
+			{
+				
+				state = MEAS_IDLE; 
+				break; 
+			}
+			
+			case MEAS_SAVE_DATA: 
+			{
+				
+				state = MEAS_IDLE; 
+				break; 
+			}
+			
+			case MEAS_ERROR: 
+			default:
+			{
+				
+				break; 
+			} 
+		}
 		vTaskDelay( 10 / portTICK_RATE_MS ); 
 	}
 }

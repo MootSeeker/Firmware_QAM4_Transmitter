@@ -42,8 +42,8 @@ int main(void)
 
 	vInitClock();
 	
-	vSemaphoreCreateBinary(init_synchronisation);
-	configASSERT(init_synchronisation);
+	vSemaphoreCreateBinary( init_synchronisation );
+	configASSERT( init_synchronisation );
 
 	/* Start and initialize the initialization Task. */
 	task_status = xTaskCreate( init_task,
