@@ -288,6 +288,9 @@
     <Compile Include="includes\main.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="includes\measurement_task.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="includes\mem_check.h">
       <SubType>compile</SubType>
     </Compile>
@@ -313,6 +316,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="measurement_task.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="mem_check.c">

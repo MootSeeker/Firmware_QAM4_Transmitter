@@ -84,13 +84,17 @@ void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ])
 
 void vQuamGen( void *pvParameters )
 {
+	SemaphoreHandle_t init_synchronisation = *( SemaphoreHandle_t* )pvParameters;
+	configASSERT( init_synchronisation );
+	
 	while( evDMAState == NULL ) 
 	{
 		vTaskDelay( 3 / portTICK_RATE_MS );
 	}
 			
 	xEventGroupWaitBits(evDMAState, DMAGENREADY, false, true, portMAX_DELAY);
-	
+	xSemaphoreGive( init_synchronisation );
+
 	for(;;) 
 	{
 		vTaskDelay( 10 / portTICK_RATE_MS );

@@ -29,6 +29,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "semphr.h"
 #include "event_groups.h"
 #include "stack_macros.h"
 
@@ -47,7 +48,21 @@
 /* ---------- Private includes ---------- */
 #include "twiMaster.h"
 #include "lsm9ds1.h"
+#include "measurement_task.h"
 
+
+#define TASK_STATES_MAX ( 4 )
+
+/* Task Stack Sizes
+ * NOTE: Stack sizes in WORDs, Heap in BYTEs! */
+#define TASK_STACK_INIT              ( configMINIMAL_STACK_SIZE )
+#define TASK_STACK_MEAS				 ( configMINIMAL_STACK_SIZE )
+#define TASK_STACK_GEN				 ( configMINIMAL_STACK_SIZE + 500 )
+
+/* Task Priorities */
+#define TASK_PRIORITY_INIT           ( 3 )
+#define TASK_PRIORITY_MEAS			 ( 2 )
+#define TASK_PRIORITY_GEN			 ( 3 )
 
 
 // ..........................................................................................................
