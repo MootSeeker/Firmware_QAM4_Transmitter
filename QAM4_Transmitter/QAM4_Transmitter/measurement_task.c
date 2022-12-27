@@ -9,12 +9,18 @@
 
 st_measurement gst_measurement; 
 
+SemaphoreHandle_t meas_mutex; 
 
 void measurement_task( void* pvParameters )
 {
 	st_measurement *pst_meas = &gst_measurement; 
 
 	en_measurement_state state = MEAS_IDLE; 
+	TickType_t old_time, runtime;
+	
+	// Create Mutex to protect measurement data
+	meas_mutex = xSemaphoreCreateMutex( ); 
+	if(meas_mutex != NULL) xSemaphoreGive( meas_mutex ); 
 	    
 	SemaphoreHandle_t init_synchronisation = *( SemaphoreHandle_t* )pvParameters;
 	configASSERT( init_synchronisation );
@@ -31,20 +37,26 @@ void measurement_task( void* pvParameters )
 		{
 			case MEAS_IDLE: 
 			{
-				
+				runtime = xTaskGetTickCount( );
+				if(( runtime - old_time ) >= 1000 )
+				{
+					state = MEAS_SENSOR_GET_DATA; 
+					old_time = runtime;
+				}
+				else
+				{
+					state = MEAS_IDLE; 
+				}
 				break; 
 			}
 			
 			case MEAS_SENSOR_GET_DATA: 
 			{
-				
-				state = MEAS_IDLE; 
-				break; 
-			}
-			
-			case MEAS_SAVE_DATA: 
-			{
-				
+				xSemaphoreTake( meas_mutex, portMAX_DELAY ); 
+				{
+					pst_meas->temperature = getTemperatureData( );	
+				}
+				xSemaphoreGive( meas_mutex );
 				state = MEAS_IDLE; 
 				break; 
 			}

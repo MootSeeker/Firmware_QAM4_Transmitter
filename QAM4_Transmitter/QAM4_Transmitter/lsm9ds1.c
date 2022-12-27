@@ -17,6 +17,7 @@
  int16_t mx = 0;
  int16_t my = 0;
  int16_t mz = 0;
+ 
  float temperature = 0;
  
 void LSM9DS1Init(void) 
@@ -79,9 +80,9 @@ void LSM9DS1Init(void)
 	  uint8_t temp[2];
 	  int16_t tempValue = 0;
 	  twi_read(GYROACCADDRESS, OUT_TEMP_L, 2, temp);
-	  tempValue = (((int16_t) temp[1] << 12) | temp[0] << 4 ) >> 4;
+	  tempValue = ((( int16_t ) temp[ 1 ] << 12 ) | temp[ 0 ] << 4 ) >> 4;
 	  temperature *= 0.9;
-	  temperature += ((float)tempValue / 16)+25;  
+	  temperature += (( float ) tempValue / 16 ) + 25;  
   }
   
   int16_t getGyroData( int axis ) 
@@ -140,5 +141,6 @@ void LSM9DS1Init(void)
   
   float getTemperatureData( ) 
   {
-	  return temperature / 10;
+	  readTempData( ); 
+	  return temperature; 
   }
