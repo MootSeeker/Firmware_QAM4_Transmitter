@@ -26,6 +26,8 @@ typedef struct
 st_measurement gst_measurement; 
 
 void measurement_task( void* pvParameters ); 
+void meas_lock_mutex( void ); 
+void meas_unlock_mutex( void ); 
 
 
 #endif /* MEASUREMENT_TASK_H_ */

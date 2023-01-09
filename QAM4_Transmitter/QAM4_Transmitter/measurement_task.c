@@ -61,7 +61,7 @@ void measurement_task( void* pvParameters )
 				break; 
 			}
 			
-			case MEAS_ERROR: 
+			case MEAS_ERROR:		//Error Case 
 			default:
 			{
 				
@@ -70,4 +70,15 @@ void measurement_task( void* pvParameters )
 		}
 		vTaskDelay( 10 / portTICK_RATE_MS ); 
 	}
+}
+
+
+void meas_lock_mutex( void )
+{
+	xSemaphoreTake( meas_mutex, portMAX_DELAY ); 
+}
+
+void meas_unlock_mutex( void )
+{
+	xSemaphoreGive( meas_mutex ); 
 }

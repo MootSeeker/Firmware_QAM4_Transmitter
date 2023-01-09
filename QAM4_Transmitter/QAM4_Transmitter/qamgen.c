@@ -110,12 +110,12 @@ void createSendData( void )
 	//char senddata[10] = "HelloWorld";
 	uint8_t datalen = 4; // strlen(senddata);
 			
-	xSemaphoreTake( meas_mutex, portMAX_DELAY ); 
+	meas_lock_mutex( ); 
 	{
 		//Get Temperature to data buffer
 		senddataf.as_float = pst_meas->temperature; 
 	}
-	xSemaphoreGive( meas_mutex ); 
+	meas_unlock_mutex( ); 
 
 	//Add an extra symbol on the begining with a diffrent amplitude to check received signal on the other end.
 	sendbuffer[0] = 99;

@@ -26,6 +26,7 @@
 #include "port_driver.h"
 
 /* FreeRTOS includes ---------- */
+#include "FreeRTOSConfig.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
