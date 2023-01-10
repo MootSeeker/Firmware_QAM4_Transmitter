@@ -57,6 +57,12 @@ void measurement_task( void* pvParameters )
 					pst_meas->temperature = getTemperatureData( );	
 				}
 				xSemaphoreGive( meas_mutex );
+				
+				st_display *pst_display = &gst_display; 
+				pst_display->cmd = DISP_SHOW_MEASUREMENT; 
+				
+				createSendData( ); 
+				
 				state = MEAS_IDLE; 
 				break; 
 			}

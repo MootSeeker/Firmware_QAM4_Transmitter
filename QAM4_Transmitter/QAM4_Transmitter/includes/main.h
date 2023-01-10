@@ -50,6 +50,7 @@
 #include "twiMaster.h"
 #include "lsm9ds1.h"
 #include "measurement_task.h"
+#include "display_task.h"
 
 
 #define TASK_STATES_MAX ( 4 )
@@ -59,11 +60,13 @@
 #define TASK_STACK_INIT              ( configMINIMAL_STACK_SIZE )
 #define TASK_STACK_MEAS				 ( configMINIMAL_STACK_SIZE )
 #define TASK_STACK_GEN				 ( configMINIMAL_STACK_SIZE + 500 )
+#define TASK_STACK_DISP				 ( configMINIMAL_STACK_SIZE )
 
 /* Task Priorities */
 #define TASK_PRIORITY_INIT           ( 3 )
 #define TASK_PRIORITY_MEAS			 ( 2 )
 #define TASK_PRIORITY_GEN			 ( 3 )
+#define TASK_PRIORITY_DISP			 ( 1 )
 
 
 // ..........................................................................................................

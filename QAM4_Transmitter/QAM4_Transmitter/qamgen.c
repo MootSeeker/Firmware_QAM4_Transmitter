@@ -62,7 +62,7 @@ void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ])
 			case 3:
 			buffer[ i ] = 0x800 + ( sinLookup50[ i + 24 ]);
 			break;
-			case 99:
+			case 99: // Debug Case to sync Oscilloscope
 			buffer[ i ] = 0x800 + ( sinLookup100[ i ]);
 			break;
 			

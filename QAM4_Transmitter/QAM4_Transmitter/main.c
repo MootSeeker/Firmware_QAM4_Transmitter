@@ -97,19 +97,24 @@ void init_task( void *pvParameters )
 		
 	task_status = xTaskCreate( vQuamGen,
 								"GEN", 
-								configMINIMAL_STACK_SIZE + 500,
+								TASK_STACK_GEN,
 								&init_synchronisation,
-								TASK_PRIORITY_MEAS,
+								TASK_PRIORITY_GEN,
 								&task_state[ 2 ].handle );
 								
 	configASSERT( task_status == pdPASS );
 	xSemaphoreTake( init_synchronisation, portMAX_DELAY );
 	
-	vInitDisplay();
-	vDisplayClear();
-	vDisplayWriteStringAtPos(0,0,"QAM4 Transmitter");
-	vDisplayWriteStringAtPos(1,0,"EDUBoard Version");
-	vDisplayWriteStringAtPos(2,0,"V1.01 Beta");
+	task_status = xTaskCreate( display_handler,
+							   "DISP",
+							   TASK_STACK_DISP,
+						       &init_synchronisation,
+							   TASK_PRIORITY_DISP,
+							   &task_state[ 3 ].handle );
+	configASSERT( task_status == pdPASS );
+	xSemaphoreTake( init_synchronisation, portMAX_DELAY );
+	
+
 	
 	/* Initialization completed, suspend the task */
 	vTaskSuspend( NULL ); 
