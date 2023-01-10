@@ -117,29 +117,29 @@ void createSendData( void )
 	meas_unlock_mutex( ); 
 
 	//Add an extra symbol on the begining with a diffrent amplitude to check received signal on the other end.
-	sendbuffer[0] = 99;
+	//sendbuffer[0] = 99;
 	
 	//Begin Buffer with two synch symbols for receiever
+	sendbuffer[0] = 0;
 	sendbuffer[1] = 0;
-	sendbuffer[2] = 0;
 	
 	//Parse ID
-	sendbuffer[3] = sendID & 0x03;
-	sendbuffer[4] = (sendID >> 2) & 0x03;
+	sendbuffer[2] = sendID & 0x03;
+	sendbuffer[3] = (sendID >> 2) & 0x03;
 	
 	//Parse Data length
-	sendbuffer[5] = (datalen >> 0) & 0x03;
-	sendbuffer[6] = (datalen >> 2) & 0x03;
-	sendbuffer[7] = (datalen >> 4) & 0x03;
-	sendbuffer[8] = (datalen >> 6) & 0x03;
+	sendbuffer[4] = (datalen >> 0) & 0x03;
+	sendbuffer[5] = (datalen >> 2) & 0x03;
+	sendbuffer[6] = (datalen >> 4) & 0x03;
+	sendbuffer[7] = (datalen >> 6) & 0x03;
 	
 	//Parse Data - 4 Bytes as 2bit symbol
 	for(int i = 0; i < datalen;i++)
 	{
-		sendbuffer[9 + i*4 + 0] = (senddataf.as_uint8[i] >> 0) & 0x03;
-		sendbuffer[9 + i*4 + 1] = (senddataf.as_uint8[i] >> 2) & 0x03;
-		sendbuffer[9 + i*4 + 2] = (senddataf.as_uint8[i] >> 4) & 0x03;
-		sendbuffer[9 + i*4 + 3] = (senddataf.as_uint8[i] >> 6) & 0x03;
+		sendbuffer[8 + i*4 + 0] = (senddataf.as_uint8[i] >> 0) & 0x03;
+		sendbuffer[8 + i*4 + 1] = (senddataf.as_uint8[i] >> 2) & 0x03;
+		sendbuffer[8 + i*4 + 2] = (senddataf.as_uint8[i] >> 4) & 0x03;
+		sendbuffer[8 + i*4 + 3] = (senddataf.as_uint8[i] >> 6) & 0x03;
 	}
 	
 	//Calculate simple checksum so receiver could check if received correkt and save one byte checksum as 2bit symbol
@@ -148,13 +148,13 @@ void createSendData( void )
 	{
 		checksum += sendbuffer[i];
 	}
-	sendbuffer[8 + (datalen * 4) + 0] = (checksum >> 0) & 0x03;
-	sendbuffer[8 + (datalen * 4) + 1] = (checksum >> 2) & 0x03;
-	sendbuffer[8 + (datalen * 4) + 2] = (checksum >> 4) & 0x03;
-	sendbuffer[8 + (datalen * 4) + 3] = (checksum >> 6) & 0x03;
+	sendbuffer[7 + (datalen * 4) + 0] = (checksum >> 0) & 0x03;
+	sendbuffer[7 + (datalen * 4) + 1] = (checksum >> 2) & 0x03;
+	sendbuffer[7 + (datalen * 4) + 2] = (checksum >> 4) & 0x03;
+	sendbuffer[7 + (datalen * 4) + 3] = (checksum >> 6) & 0x03;
 	
 	//Save Sendbuffer size
-	sendbuffer_size = 8 + (datalen * 4) + 4;
+	sendbuffer_size = 7 + (datalen * 4) + 4;
 }
 
 ISR( DMA_CH0_vect )
