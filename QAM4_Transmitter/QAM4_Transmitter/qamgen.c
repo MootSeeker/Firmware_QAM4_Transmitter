@@ -102,9 +102,7 @@ void vQuamGen( void *pvParameters )
 }
 
 void createSendData( void )
-{
-	st_measurement *pst_meas = &gst_measurement; 
-	
+{	
 	sendID++;
 	
 	//char senddata[10] = "HelloWorld";
@@ -112,6 +110,7 @@ void createSendData( void )
 			
 	meas_lock_mutex( ); 
 	{
+		st_measurement *pst_meas = &gst_measurement;
 		//Get Temperature to data buffer
 		senddataf.as_float = pst_meas->temperature; 
 	}

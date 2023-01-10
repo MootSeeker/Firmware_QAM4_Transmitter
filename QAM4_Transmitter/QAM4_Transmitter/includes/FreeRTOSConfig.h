@@ -97,6 +97,7 @@ to exclude the API function. */
 #define INCLUDE_vTaskSuspend			1
 #define INCLUDE_vTaskDelayUntil			1
 #define INCLUDE_vTaskDelay				1
+#define configUSE_MUTEXES				1
 
 #define INCLUDE_uxTaskGetStackHighWaterMark	1 // used to check if stack is going low
 #define	INCLUDE_xTaskGetCurrentTaskHandle	1
