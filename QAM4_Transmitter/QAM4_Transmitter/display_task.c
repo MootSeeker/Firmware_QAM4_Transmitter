@@ -78,7 +78,7 @@ void display_handler( void *pvParameters )
 				
 				vDisplayWriteStringAtPos(0,0,"QAM4 Transmitter");
 				vDisplayWriteStringAtPos(1,0,"EDUBoard Version");
-				vDisplayWriteStringAtPos(3,0,"V1.02 Beta - Release");
+				vDisplayWriteStringAtPos(3,0,"V1.03 Beta - Release");
 				state = DISP_SHOW_MEASUREMENT; 
 				break; 
 			}

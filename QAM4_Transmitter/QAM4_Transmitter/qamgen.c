@@ -46,6 +46,10 @@ void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ])
 {
 	static int pSendbuffer = 0;
 	
+	//Toggle a Pin at Start of transmission
+	if( pSendbuffer == 0 )PORTB.OUTSET |= PIN0_bm; 
+	else PORTB.OUTCLR |= PIN0_bm; 
+	
 	for( int i = 0; i < NR_OF_SAMPLES; i++ )
 	{
 		switch( sendbuffer[ pSendbuffer ])
@@ -86,6 +90,9 @@ void vQuamGen( void *pvParameters )
 {
 	SemaphoreHandle_t init_synchronisation = *( SemaphoreHandle_t* )pvParameters;
 	configASSERT( init_synchronisation );
+	
+	// Test Pin to signal start of transmission
+	PORTB.DIRSET |= PIN0_bm; 
 	
 	while( evDMAState == NULL ) 
 	{
