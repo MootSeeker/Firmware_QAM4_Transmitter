@@ -35,8 +35,8 @@ void display_handler( void *pvParameters )
 		{
 			case DISP_IDLE: 
 			{
-				display_clear(); 
-				vDisplayWriteStringAtPos(0,0,"Device is Ideling");
+				 
+				vDisplayWriteStringAtPos(3,0,"Device is Ideling");
 				
 				// Read new command if available
 				if(old_cmd != pst_display->cmd)
