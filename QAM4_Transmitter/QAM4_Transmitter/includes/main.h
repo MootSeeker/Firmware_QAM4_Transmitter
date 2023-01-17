@@ -1,14 +1,46 @@
-/*
- * main.h
+/**
+ * @file   main.h
  *
- * Created: 04.12.2022 14:07:52
- *  Author: kevin
- */ 
+ * @brief  	Brief description of the content of main.h
+ * @author 	kevin, Juventus Techniker Schule
+ * @date   	Jan 15, 2023 - first implementation
+ * @version 1.0.0
+ * 
+ * MIT License
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright (c) 2023 Juventus Techniker Schule
+ */
 
 
 #ifndef MAIN_H_
 #define MAIN_H_
 
+ // ********************************************************************************
+ /**
+ * @brief  Includes
+ *
+ * Section for module-specific include files
+ * - Normally not necessary in header files
+ */
+ 
 /*---------- Global includes ---------- */
 #include <stdio.h>
 #include <stdint.h>
@@ -52,6 +84,12 @@
 #include "measurement_task.h"
 #include "display_task.h"
 
+ // ********************************************************************************
+ /**
+ * @brief  Macros
+ *
+ * Section for module-specific definitions (constants) and macros
+ */
 
 #define TASK_STATES_MAX ( 4 )
 
@@ -68,7 +106,22 @@
 #define TASK_PRIORITY_GEN			 ( 3 )
 #define TASK_PRIORITY_DISP			 ( 1 )
 
+ 
+ // ********************************************************************************
+ /**
+ * @brief  Enumerations
+ *
+ * Section for module-specific enumerations
+ */
 
+ 
+ // ********************************************************************************
+ /**
+ * @brief  Structures
+ *
+ * Section for module-specific structures
+ */
+ 
 // ..........................................................................................................
 /**
  * @brief  Universal usable union for float data values
@@ -92,4 +145,19 @@ typedef union _unionf32
     uint8_t  as_uint8[4];   // 4 byte
 } union_float_type;
 
-#endif /* MAIN_H_ */
+ // ********************************************************************************
+ /**
+ * @brief  Global variables
+ *
+ * Section for module-specific global variables
+ */
+
+ 
+ // ********************************************************************************
+ /**
+ * @brief  Global function prototypes
+ *
+ * Section for module-specific global function prototypes
+ */
+ 
+#endif /* END: MAIN_H_ */

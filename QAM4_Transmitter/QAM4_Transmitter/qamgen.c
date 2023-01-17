@@ -1,12 +1,50 @@
-/*
-* qamgen.c
-*
-* Created: 05.05.2020 16:24:59
-*  Author: Chaos
-*/ 
+/**
+ * @file   qamgen.c
+ *
+ * @brief  	Brief description of the content of test.c
+ * @author 	kevin, Juventus Techniker Schule
+ * @date   	Jan 10, 2023 - first implementation
+ * @version 1.0.0
+ * 
+ * MIT License
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * Copyright (c) 2023 Juventus Techniker Schule
+ */
 
+ // ********************************************************************************
+ /**
+ * @brief  Includes
+ *
+ * Section for module-specific include files
+ * If all include files are inserted in main.h, only the file main.h must be included here
+ */
 #include "main.h"
 
+// ******************************************************************************** 
+/**
+* @brief  Constant variables
+*
+* Section for module-specific constant variables (static) that are only valid within the module
+*/
+ 
 // Sinus Lookup table for 100% amplitude 
 const int16_t sinLookup100[ NR_OF_SAMPLES * 2 ] = { 0x0,0x18F,0x30F,0x471,0x5A7,0x6A6,0x763,0x7D8,
 												    0x7FF,0x7D8,0x763,0x6A6,0x5A7,0x471,0x30F,0x18F,
@@ -30,7 +68,13 @@ const int16_t sinLookup50[ NR_OF_SAMPLES * 2 ] = {  0x0,0xC8,0x187,0x238,0x2D3,0
 // Defined buffer size
 #define SENDBUFFER_SIZE 100 // Changed since we send more data
 
-// File global variables
+// ********************************************************************************
+/**
+* @brief  Global variables
+*
+* Section for global variables
+*/
+ 
 //uint8_t sendbuffer[SENDBUFFER_SIZE] = {0,1,0,1,0,1,2,1,3,0,1,1,3,2,1,0,0,1,0,1};
 
 uint8_t sendbuffer[SENDBUFFER_SIZE];	// Dynamic buffer with max size of 100 symbols
@@ -38,10 +82,30 @@ uint8_t sendID = 0;						// ID of created data
 uint8_t sendbuffer_size = 0;			// Dynamic buffer size
 union_float_type senddataf;				// Data buffer to convert float in 4 bytes
 
-//Static function prtotype
+// ********************************************************************************
+/**
+* @brief  Static variables
+*
+* Section for module-specific variables (static) that are only valid within the module
+*/
+ 
+// ******************************************************************************** 
+/**
+* @brief  Static function prototypes
+*
+* Section for module-specific function prototypes (static) for functions that are only valid within the
+* module
+*/
 static void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ]); 
 
-
+ // ********************************************************************************
+ /**
+ * @brief  Static functions definitions
+ *
+ * Definition area for the module-specific functions (static) previously defined within "Static function
+ * prototypes"
+ */
+ 
 void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ])
 {
 	static int pSendbuffer = 0;
@@ -86,6 +150,13 @@ void fillBuffer( uint16_t buffer[ NR_OF_SAMPLES ])
 	}
 }
 
+ // ********************************************************************************
+ /**
+ * @brief  Global functions definitions
+ *
+ * Definition area for the global functions previously defined within "Global function prototypes"
+ */
+ 
 void vQuamGen( void *pvParameters )
 {
 	SemaphoreHandle_t init_synchronisation = *( SemaphoreHandle_t* )pvParameters;
